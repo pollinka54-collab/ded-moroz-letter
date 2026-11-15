@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Создайте персональное письмо от Деда Мороза по имени ребёнка и скачайте готовый PDF." />
+    <meta name="theme-color" content="#102c2c" />
+    <title>Мороз.Письмо — персональное письмо от Деда Мороза</title>
+    <link rel="icon" href="./mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#letter-form">Перейти к созданию письма</a>
+    <div class="paper-grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Мороз.Письмо, на главную">
+        <span class="brand-mark" aria-hidden="true">М</span>
+        <span>Мороз<span class="brand-dot">.</span>Письмо</span>
+      </a>
+      <span class="privacy-chip">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7.5 10V7a4.5 4.5 0 0 1 9 0v3M6 10h12v10H6z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="15" r="1.3" fill="currentColor"/></svg>
+        Имя остаётся в браузере
+      </span>
+    </header>
+
+    <main class="letter-studio" aria-labelledby="page-title">
+      <section class="editor-panel">
+        <div class="editor-content">
+          <p class="eyebrow"><span aria-hidden="true">✦</span> Персональное новогоднее письмо</p>
+          <h1 id="page-title">Дед Мороз уже написал письмо. <em>Осталось добавить имя.</em></h1>
+          <p class="intro">Введите имя ребёнка — мы аккуратно подставим его в ваш шаблон и подготовим PDF, который можно скачать и распечатать.</p>
+
+          <form id="letter-form" novalidate>
+            <label class="field" for="child-name">
+              <span class="field-label">Имя ребёнка</span>
+              <span class="field-control">
+                <input id="child-name" name="childName" type="text" maxlength="24" autocomplete="off" placeholder="Например, Маша" aria-describedby="name-hint child-name-error" required />
+                <span class="quill" aria-hidden="true">✎</span>
+              </span>
+              <small id="name-hint">Только имя, до 24 символов</small>
+              <small class="field-error" id="child-name-error" role="alert"></small>
+            </label>
+
+            <button class="create-button" id="create-button" type="submit">
+              <span>Создать письмо</span>
+              <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          </form>
+
+          <div class="privacy-note">
+            <span class="privacy-icon" aria-hidden="true">✓</span>
+            <p><strong>Без загрузки данных.</strong> Письмо собирается прямо на вашем устройстве: имя не отправляется на сервер и не сохраняется.</p>
+          </div>
+
+          <ol class="steps" aria-label="Как создать письмо">
+            <li><span>01</span><p><strong>Введите имя</strong><small>Оно появится в обращении</small></p></li>
+            <li><span>02</span><p><strong>Проверьте письмо</strong><small>Шаблон останется без изменений</small></p></li>
+            <li><span>03</span><p><strong>Скачайте PDF</strong><small>Формат A4, готов к печати</small></p></li>
+          </ol>
+        </div>
+      </section>
+
+      <aside class="preview-panel" aria-label="Предварительный просмотр письма">
+        <div class="preview-topline">
+          <div>
+            <span class="preview-kicker">Предпросмотр</span>
+            <strong id="preview-title">Письмо для вашего ребёнка</strong>
+          </div>
+          <span class="format-chip">A4 · PDF</span>
+        </div>
+
+        <div class="desk-surface">
+          <span class="pine-sprig pine-sprig-one" aria-hidden="true"></span>
+          <span class="pine-sprig pine-sprig-two" aria-hidden="true"></span>
+          <figure class="letter-sheet" id="letter-sheet" data-state="empty">
+            <img src="./assets/letter-template.png" alt="Шаблон письма от Деда Мороза" />
+            <span class="letter-name-overlay" id="letter-name-overlay">Имя</span>
+            <figcaption id="letter-caption">Введите имя слева — оно появится в письме</figcaption>
+          </figure>
+          <span class="wax-seal" aria-hidden="true">М</span>
+        </div>
+
+        <div class="result-actions" id="result-actions" hidden>
+          <button class="download-button" id="download-letter-button" type="button">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Скачать письмо PDF
+          </button>
+          <button class="reset-button" id="reset-button" type="button">Создать для другого имени</button>
+        </div>
+
+        <div class="print-note">
+          <span aria-hidden="true">◌</span>
+          <p><strong>Готово к домашней печати</strong><small>Одна страница A4 · без водяных знаков</small></p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Мороз.Письмо</span>
+      <span>Ваш шаблон · персональное имя · готовый PDF</span>
+    </footer>
+  </body>
+</html>
